@@ -6,7 +6,7 @@
   >
     <div class="navbar-brand">
       <a class="navbar-item">
-        <img src="../assets/Image/LogoCut.webp"/>
+        <img src="../assets/Image/LogoCut.webp" />
       </a>
       <a
         role="button"

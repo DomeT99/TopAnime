@@ -1,0 +1,51 @@
+.card-color {
+  background-color: #b1b1b1 !important;
+}
+
+.txt-center {
+  text-align: center !important;
+}
+
+.f-size-20 {
+  font-size: 20px;
+}
+
+.f-family-verdana {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+}
+
+.columns {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@-webkit-keyframes scale {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes scale {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.scale {
+  -webkit-animation-name: scale;
+          animation-name: scale;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+}
+/*# sourceMappingURL=common.css.map */
