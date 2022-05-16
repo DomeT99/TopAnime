@@ -1,19 +1,14 @@
 <template>
   <div class="card scale">
-    <header class="card-header card-color">
-      <p class="card-header-title"><!-- {{ title }} -->aaaaa</p>
-      <button class="card-header-icon" aria-label="more options">
-        <span class="icon">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-      </button>
-    </header>
     <div class="card-image">
       <figure class="image">
-        <img :src="image" alt="Anime Cover" />
+        <img
+          src="https://cdn.anime-planet.com/anime/primary/spy-x-family-1-285x403.webp?t=1646636920"
+          alt="Anime Cover"
+        />
       </figure>
     </div>
-    <div class="card-footer-item card-color">
+    <div class="card-footer-item card-color" style="background-color: red">
       <button @click="openLink(link)" class="button is-black">Open</button>
     </div>
   </div>
@@ -23,12 +18,19 @@
 export default {
   props: {
     title: String,
-    image: String,
-    link: String,
+
+    image: {
+      type: String,
+      default: "src/assets/Image/LogoCut.webp",
+    },
+    link: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
-    openLink(linkAnime) {
-      window.open(linkAnime);
+    openLink(link) {
+      window.open(link);
     },
   },
 };
