@@ -6,7 +6,12 @@
       Passionate about anime? Here is a list of the best around!
     </h2>
     <hr />
-    <div class="columns is-mobile">
+    <div class="columns is-mobile" v-if="loading">
+      <div class="column is-10 is-offset-1">
+        <Loader />
+      </div>
+    </div>
+    <div class="columns is-mobile" v-else>
       <div class="column is-10 is-offset-1">
         <SlideShow />
       </div>
@@ -16,9 +21,10 @@
 
 <script>
 import SlideShow from "../components/Home/SlideShow.vue";
+import Loader from "../components/AppLoader.vue";
 export default {
   name: "HomeView",
-  components: { SlideShow },
+  components: { SlideShow, Loader },
 
   data() {
     return {
@@ -28,6 +34,7 @@ export default {
           img: "",
         },
       ],
+      loading: true,
     };
   },
   provide() {
@@ -35,8 +42,12 @@ export default {
       res: this.res,
     };
   },
-  created() {
-    this.callAnime();
+  async created() {
+    let result = await this.callAnime();
+
+    if (result) {
+      this.loading = false;
+    }
   },
   methods: {
     async callAnime() {
@@ -57,6 +68,8 @@ export default {
           });
         })
         .catch((err) => console.error(err));
+
+      return this.res;
     },
   },
 };
