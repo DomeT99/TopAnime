@@ -1,7 +1,7 @@
 <template>
   <div class="card scale">
     <div class="card-image">
-      <figure style="width: 256px; height: 350px" class="image">
+      <figure class="image card-measure">
         <img :src="img" alt="Anime Cover" />
       </figure>
     </div>

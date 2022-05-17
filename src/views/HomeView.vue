@@ -1,10 +1,7 @@
 <template>
   <div class="txt-center container">
     <hr />
-    <h1 class="f-size-20 f-family-verdana">Hello!</h1>
-    <h2 class="f-family-verdana">
-      Passionate about anime? Here is a list of the best around!
-    </h2>
+    <Banner />
     <hr />
     <div class="columns is-mobile" v-if="loading">
       <div class="column is-10 is-offset-1">
@@ -22,9 +19,10 @@
 <script>
 import SlideShow from "../components/Home/SlideShow.vue";
 import Loader from "../components/AppLoader.vue";
+import Banner from "../components/Home/HomeBanner.vue";
 export default {
   name: "HomeView",
-  components: { SlideShow, Loader },
+  components: { SlideShow, Loader, Banner },
 
   data() {
     return {
