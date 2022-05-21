@@ -1,46 +1,53 @@
 <template>
-    <div>
-        <table class="table table is-fullwidth is-hoverable">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Website</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr :key="res" v-for="res in dataTab">
-                    <td>{{ res.title }}</td>
-                    <td><a>{{ res.link }}</a></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="column is-10 is-offset-1" v-if="activeLoad">
+        <Loader />
+    </div>
+    <div v-else>
+        <div v-if="emptyData">
+            No data result
+        </div>
+        <div v-else>
+            <table class="table table is-fullwidth is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Website</th>
+                    </tr>
+                </thead>
+                <tbody :key="res" v-for="res in dataTab">
+                    <tr>
+                        <td>{{ res.title }}</td>
+                        <td><button class="button is-black" @click="openLink(res.address)">More Info</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
 <script>
+import { options } from "@/assets/JS/options"
+import Loader from "@/components/AppLoader.vue";
 export default {
+    components: {
+        Loader,
+    },
     data() {
         return {
             dataTab: [{
                 title: "",
-                link: "",
-            }]
+                address: "",
+            }],
+            emptyData: true,
         }
     },
     props: {
-        inputTxtTab: String
+        inputTxtTab: String,
+        activeLoad: Boolean
     },
     methods: {
         async resAnime() {
 
-            const options = {
-                method: "GET",
-                headers: {
-                    "X-RapidAPI-Host": "top-anime.p.rapidapi.com",
-                    "X-RapidAPI-Key":
-                        "172d5540d9mshc7753ad9d75b090p173ef9jsn869109d78a2e",
-                },
-            };
             let q = this.inputTxtTab;
 
             let result = await fetch(
@@ -48,12 +55,41 @@ export default {
                 options
             )
                 .then((response) => response.json())
-                .then((response) => console.log(response))
                 .catch((err) => console.error(err));
 
             return result;
 
         },
+        openLink(link) {
+            window.open(link)
+        }
     },
+    watch: {
+        inputTxtTab: {
+            async handler(newVal, oldVal) {
+                if (newVal != oldVal) {
+
+                    this.dataTab = []
+
+                    let result = await this.resAnime();
+
+                    if (result != "" && result != undefined) {
+
+                        result.forEach(element => {
+                            this.dataTab.push(element);
+                        });
+                        this.emptyData = false;
+
+                    }
+
+                    if (this.activeLoad) {
+                        this.$emit("StopLoad", false);
+                    }
+                }
+
+            },
+
+        }
+    }
 }
 </script>

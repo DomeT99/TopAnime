@@ -3,32 +3,30 @@
     <hr />
     <div class="columns is-mobile">
       <div class="column is-10 is-offset-1">
-        <InputSearch @SendTxt="inputTxt = $event" />
+        <InputSearch @SendTxt="dataRec = $event" />
       </div>
     </div>
     <hr />
-    <div class="columns is-mobile" v-if="loading">
+    <div class="columns is-mobile">
       <div class="column is-10 is-offset-1">
-        <Loader />
-      </div>
-    </div>
-    <div class="columns is-mobile" v-else>
-      <div class="column is-10 is-offset-1">
-        <TableAnime :inputTxtTab="inputTxt" />
+        <TableAnime @ClearString="dataRec.inputString = $event" @StopLoad="dataRec.load = $event"
+          :activeLoad="dataRec.load" :inputTxtTab="dataRec.inputString" />
       </div>
     </div>
   </div>
 </template>
 <script>
-import Loader from "../components/AppLoader.vue";
 import InputSearch from "../components/SearchView/InputSearch.vue";
 import TableAnime from "../components/SearchView/TableAnimeRes.vue"
 export default {
-  components: { Loader, InputSearch, TableAnime },
+  components: { InputSearch, TableAnime },
   data() {
     return {
-      loading: false,
-      inputTxt: "",
+      dataRec: {
+        inputString: "",
+        load: false
+      },
+
     };
   }
 };
