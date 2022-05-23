@@ -7,11 +7,11 @@
             No data result
         </div>
         <div v-else>
-            <table class="table table is-fullwidth is-hoverable">
+            <table class="table is-striped is-narrow table is-fullwidth is-hoverable is-centered">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Website</th>
+                        <th class="txt-center">Title</th>
+                        <th class="txt-center">Website</th>
                     </tr>
                 </thead>
                 <tbody :key="res" v-for="res in dataTab">
@@ -28,6 +28,7 @@
 <script>
 import { options } from "@/assets/JS/options"
 import Loader from "@/components/AppLoader.vue";
+
 export default {
     components: {
         Loader,
