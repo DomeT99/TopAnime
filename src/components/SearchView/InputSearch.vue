@@ -17,17 +17,14 @@ export default {
       dataSend: {
         inputString: "",
         load: true,
-        openPopup: false
       }
     };
   },
   methods: {
     sendText() {
       if (this.dataSend.inputString == "") {
-        this.dataSend.openPopup = true;
-        this.dataSend.load = false;
 
-        this.$emit("SendTxt", this.dataSend)
+        this.$emit("AlertPopup", true)
       } else {
         this.$emit("SendTxt", this.dataSend)
       }

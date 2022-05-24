@@ -3,14 +3,14 @@
     <hr />
     <div class="columns is-mobile">
       <div class="column is-10 is-offset-1">
-        <InputSearch @SendTxt="dataRec = $event" />
+        <InputSearch @AlertPopup="openPopup = $event" @SendTxt="dataRec = $event" />
       </div>
     </div>
     <hr />
     <div class="columns is-mobile">
       <div class="column is-10 is-offset-1">
-        <div v-if="openValue = dataRec.openPopup">
-          <AlertPopup @ClosePopup="dataRec.openPopup = $event" :titleModal="'WARNING'">
+        <div v-if="openPopup">
+          <AlertPopup @ClosePopup="openPopup = $event" :titleModal="'WARNING'">
             Please enter a value
           </AlertPopup>
         </div>
@@ -32,9 +32,10 @@ export default {
       dataRec: {
         inputString: "",
         load: false,
-        openPopup: false
+
       },
-      openValue: false
+      openPopup: false,
+
     };
   }
 };
