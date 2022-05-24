@@ -16,13 +16,22 @@ export default {
     return {
       dataSend: {
         inputString: "",
-        load: true
+        load: true,
+        openPopup: false
       }
     };
   },
   methods: {
     sendText() {
-      this.$emit("SendTxt", this.dataSend)
+      if (this.dataSend.inputString == "") {
+        this.dataSend.openPopup = true;
+        this.dataSend.load = false;
+
+        this.$emit("SendTxt", this.dataSend)
+      } else {
+        this.$emit("SendTxt", this.dataSend)
+      }
+
     }
   }
 };

@@ -6,6 +6,44 @@
     width: 256px;
     height: 350px;
 }
+//Modal
+.darkScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.514);
+    z-index: 999997;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    animation-name: fade-in;
+    animation-duration: 0.3s;
+    .showData {
+        position: fixed;
+        border-radius: 5px;
+        top: 50%;
+        left: 50%;
+        width: 45vw;
+        transform: translate(-50%, -50%);
+        background-color: rgb(255, 255, 255);
+        z-index: 999999;
+        box-shadow: 0 0 60px rgba(0, 0, 0, 0.705);
+        padding: 15px 5px 5px 5px;
+        animation-name: fade-in;
+        animation-duration: 0.3s;
+        .modal-container {
+            height: 10vh;
+            margin-top: 10px;
+        }
+        .modal-header {
+            height: 5vh;
+            border-bottom: 1px solid black;
+        }
+    }
+}
+
 //Align
 .txt-center {
     text-align: center !important;
