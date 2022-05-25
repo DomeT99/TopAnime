@@ -1,7 +1,7 @@
 <template>
   <div class="txt-center container">
     <hr />
-    <Banner />
+    <Banner :titleBanner="'Hello!'">Passionate about anime? Here is a list of the best around!</Banner>
     <hr />
     <div class="columns is-mobile" v-if="loading">
       <div class="column is-10 is-offset-1">
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     async callAnime() {
-      
+
       await fetch("https://animes3.p.rapidapi.com/", optionsHome)
         .then((response) => response.json())
         .then((response) => {

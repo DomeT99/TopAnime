@@ -1,10 +1,12 @@
 <template>
-  <h1 class="f-size-20 f-family-verdana">Hello!</h1>
+  <h1 class="f-size-20 f-family-verdana">{{titleBanner}}</h1>
   <h2 class="f-family-verdana">
-    Passionate about anime? Here is a list of the best around!
+    <slot></slot>
   </h2>
 </template>
 
 <script>
-export default {};
+export default {
+  props:{titleBanner:String}
+};
 </script>
