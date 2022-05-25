@@ -30,9 +30,6 @@ import { Carousel, Slide, Navigation } from "vue3-carousel";
 import CardComponent from "../Home/CardComponent.vue";
 export default {
   inject: ["res"],
-  created() {
-    console.log(this.res);
-  },
   name: "App",
   components: {
     Carousel,
