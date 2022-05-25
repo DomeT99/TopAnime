@@ -5,7 +5,7 @@
     <hr>
     <div class="columns">
       <div class="column is-2"></div>
-      <div class="column is-mobile is-fullwidth">
+      <div class="column is-mobile is-fullwidth scale">
         <Message>
           <p class="f-size-20">I hope you enjoyed the experience, follow me on my social networks and visit my website.
             For anything
@@ -18,7 +18,7 @@
     </div>
     <div class="columns">
       <div class="column is-4"></div>
-      <div class="column is-mobile is-4">
+      <div class="column is-mobile is-4 scale">
         <Message>
           <div class="columns">
             <div class="column is-mobile" :key="icon" v-for="icon in iconsButton">
